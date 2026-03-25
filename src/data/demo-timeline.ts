@@ -9,10 +9,10 @@ export interface ScheduleBlock {
 }
 
 export const DEMO_COURSES: Course[] = [
-  { id: 'cs101', name: 'CS 101 – Intro to Programming', time: '9:00 AM', days: ['Mon', 'Wed', 'Fri'], room: 'Room 204' },
-  { id: 'math201', name: 'MATH 201 – Linear Algebra', time: '11:00 AM', days: ['Tue', 'Thu'], room: 'Room 112' },
-  { id: 'phys150', name: 'PHYS 150 – Mechanics', time: '2:00 PM', days: ['Mon', 'Wed'], room: 'Lab 3B' },
-  { id: 'eng102', name: 'ENG 102 – Academic Writing', time: '4:00 PM', days: ['Tue', 'Thu'], room: 'Room 308' },
+  { id: 'math', name: 'Math', time: '10:55 AM', days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'] },
+  { id: 'french', name: 'French', time: '11:50 AM', days: ['Tue', 'Thu'] },
+  { id: 'art', name: 'Art', time: '11:50 AM', days: ['Mon', 'Fri'] },
+  { id: 'science', name: 'Socials / Science', time: '1:35 PM', days: ['Mon', 'Wed'] },
 ];
 
 export const DEMO_SCHEDULE: ScheduleBlock[] = [
@@ -77,57 +77,57 @@ export const DEMO_TIMELINE: TimelineEvent[] = [
 export const DEMO_STRESS_EVENTS: StressEvent[] = [
   {
     id: 'se1',
-    timestamp: new Date(2026, 2, 25, 9, 22),
+    timestamp: new Date(2026, 2, 25, 10, 58),
     duration: 15,
     peakHR: 94,
     interventionType: 'Deep Breathing',
     dismissMethod: 'tapped',
-    courseId: 'cs101',
+    courseId: 'math',
   },
   {
     id: 'se2',
-    timestamp: new Date(2026, 2, 25, 9, 45),
+    timestamp: new Date(2026, 2, 25, 11, 20),
     duration: 12,
     peakHR: 91,
     interventionType: 'Deep Breathing',
     dismissMethod: 'auto',
-    courseId: 'cs101',
+    courseId: 'math',
   },
   {
     id: 'se3',
-    timestamp: new Date(2026, 2, 24, 11, 15),
+    timestamp: new Date(2026, 2, 24, 12, 5),
     duration: 18,
     peakHR: 96,
     interventionType: 'Box Breathing',
     dismissMethod: 'tapped',
-    courseId: 'math201',
+    courseId: 'french',
   },
   {
     id: 'se4',
-    timestamp: new Date(2026, 2, 24, 14, 30),
+    timestamp: new Date(2026, 2, 24, 1, 45),
     duration: 10,
     peakHR: 89,
     interventionType: 'Deep Breathing',
     dismissMethod: 'timeout',
-    courseId: 'phys150',
+    courseId: 'science',
   },
   {
     id: 'se5',
-    timestamp: new Date(2026, 2, 23, 9, 10),
+    timestamp: new Date(2026, 2, 23, 11, 55),
     duration: 20,
     peakHR: 98,
     interventionType: 'Grounding Exercise',
     dismissMethod: 'tapped',
-    courseId: 'cs101',
+    courseId: 'art',
   },
 ];
 
 export const WEEKLY_REPORT_DATA = [
-  { day: 'Mon', events: 3, avgHR: 88, courses: ['CS 101', 'PHYS 150'] },
-  { day: 'Tue', events: 2, avgHR: 85, courses: ['MATH 201', 'ENG 102'] },
-  { day: 'Wed', events: 4, avgHR: 92, courses: ['CS 101', 'PHYS 150'] },
-  { day: 'Thu', events: 1, avgHR: 82, courses: ['MATH 201', 'ENG 102'] },
-  { day: 'Fri', events: 2, avgHR: 86, courses: ['CS 101'] },
+  { day: 'Mon', events: 3, avgHR: 88, courses: ['Math', 'Art'] },
+  { day: 'Tue', events: 2, avgHR: 85, courses: ['Math', 'French'] },
+  { day: 'Wed', events: 4, avgHR: 92, courses: ['Math', 'Science'] },
+  { day: 'Thu', events: 1, avgHR: 82, courses: ['Math', 'French'] },
+  { day: 'Fri', events: 2, avgHR: 86, courses: ['Math', 'Art'] },
   { day: 'Sat', events: 0, avgHR: 72, courses: [] },
   { day: 'Sun', events: 0, avgHR: 70, courses: [] },
 ];

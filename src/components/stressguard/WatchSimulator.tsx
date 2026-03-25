@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { StressState } from '@/types/stressguard';
-import { Heart } from 'lucide-react';
+import { Heart, Check, AlertTriangle } from 'lucide-react';
 
 interface WatchSimulatorProps {
   stressState: StressState;
@@ -13,19 +13,16 @@ const stateConfig = {
     color: 'hsl(142, 71%, 45%)',
     label: 'All Good',
     sublabel: 'No stress detected',
-    icon: '✓',
   },
   stressed: {
     color: 'hsl(38, 92%, 50%)',
     label: 'Stress Detected',
     sublabel: 'Take 5 deep breaths',
-    icon: '⚠',
   },
   recovery: {
     color: 'hsl(210, 100%, 52%)',
     label: 'Well Done',
     sublabel: 'Recovering nicely',
-    icon: '♡',
   },
 };
 
@@ -35,6 +32,12 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
   const circumference = 2 * Math.PI * radius;
   const progress = stressState === 'unstressed' ? 1 : stressState === 'recovery' ? 0.7 : 0.4;
 
+  const StateIcon = () => {
+    if (stressState === 'unstressed') return <Check className="w-5 h-5 text-emerald-600" />;
+    if (stressState === 'stressed') return <AlertTriangle className="w-5 h-5 text-amber-500" />;
+    return <Heart className="w-5 h-5 text-blue-500" />;
+  };
+
   return (
     <div className="flex flex-col items-center gap-4">
       <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Apple Watch</p>
@@ -42,13 +45,13 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
       {/* Watch Frame */}
       <div className="relative">
         {/* Outer case */}
-        <div className="w-[220px] h-[268px] rounded-[44px] bg-gradient-to-b from-neutral-700 to-neutral-800 p-[3px] shadow-2xl">
+        <div className="w-[220px] h-[268px] rounded-[44px] bg-gradient-to-b from-stone-300 to-stone-400 p-[3px] shadow-2xl">
           {/* Inner bezel */}
-          <div className="w-full h-full rounded-[42px] bg-gradient-to-b from-neutral-800 to-neutral-900 p-[2px]">
+          <div className="w-full h-full rounded-[42px] bg-gradient-to-b from-stone-200 to-stone-300 p-[2px]">
             {/* Screen */}
             <div
               className="w-full h-full rounded-[40px] flex flex-col items-center justify-center relative overflow-hidden cursor-pointer"
-              style={{ backgroundColor: '#000' }}
+              style={{ background: 'linear-gradient(180deg, #fafaf9 0%, #f5f5f4 100%)' }}
               onClick={stressState === 'stressed' ? onTapIntervention : undefined}
             >
               {/* Stress Ring */}
@@ -59,7 +62,7 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
                   cy="85"
                   r={radius}
                   fill="none"
-                  stroke="hsl(0, 0%, 20%)"
+                  stroke="hsl(30, 10%, 90%)"
                   strokeWidth="8"
                   strokeLinecap="round"
                 />
@@ -91,13 +94,12 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
 
               {/* Center content */}
               <div className="relative z-10 flex flex-col items-center gap-1">
-                <motion.span
-                  className="text-2xl"
+                <motion.div
                   animate={{ scale: stressState === 'stressed' ? [1, 1.2, 1] : 1 }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  {config.icon}
-                </motion.span>
+                  <StateIcon />
+                </motion.div>
                 <motion.p
                   className="text-sm font-semibold"
                   style={{ color: config.color }}
@@ -105,7 +107,7 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
                 >
                   {config.label}
                 </motion.p>
-                <p className="text-[10px] text-neutral-400 text-center px-4">
+                <p className="text-[10px] text-stone-400 text-center px-4">
                   {config.sublabel}
                 </p>
 
@@ -115,17 +117,17 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
                     animate={{ scale: [1, 1.15, 1] }}
                     transition={{ duration: 0.8, repeat: Infinity }}
                   >
-                    <Heart className="w-3 h-3" style={{ color: '#ff3b30', fill: '#ff3b30' }} />
+                    <Heart className="w-3 h-3 text-red-400 fill-red-400" />
                   </motion.div>
-                  <span className="text-sm font-mono font-bold text-white">{heartRate}</span>
-                  <span className="text-[9px] text-neutral-500">BPM</span>
+                  <span className="text-sm font-mono font-bold text-stone-800">{heartRate}</span>
+                  <span className="text-[9px] text-stone-400">BPM</span>
                 </div>
               </div>
 
               {/* Tap hint for stress state */}
               {stressState === 'stressed' && (
                 <motion.p
-                  className="absolute bottom-4 text-[9px] text-neutral-500"
+                  className="absolute bottom-4 text-[9px] text-stone-400"
                   animate={{ opacity: [0.3, 0.8, 0.3] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
@@ -136,9 +138,9 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
           </div>
         </div>
         {/* Digital Crown */}
-        <div className="absolute right-[-6px] top-[72px] w-[6px] h-[28px] rounded-r-sm bg-neutral-600" />
+        <div className="absolute right-[-6px] top-[72px] w-[6px] h-[28px] rounded-r-sm bg-stone-400" />
         {/* Side Button */}
-        <div className="absolute right-[-5px] top-[112px] w-[5px] h-[16px] rounded-r-sm bg-neutral-600" />
+        <div className="absolute right-[-5px] top-[112px] w-[5px] h-[16px] rounded-r-sm bg-stone-400" />
       </div>
     </div>
   );

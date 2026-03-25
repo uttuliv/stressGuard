@@ -40,6 +40,7 @@ const Index = () => {
           stressState={demo.stressState}
           heartRate={demo.heartRate}
           onTapIntervention={handleTapIntervention}
+          onChangeStressState={demo.setStressState}
         />
       </div>
     </div>

@@ -11,7 +11,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'hsl(220, 20%, 8%)' }}>
+    <div className="min-h-screen flex flex-col bg-background">
       <ControlBar
         isPlaying={demo.isPlaying}
         elapsed={demo.elapsed}

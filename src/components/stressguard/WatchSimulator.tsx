@@ -6,6 +6,7 @@ interface WatchSimulatorProps {
   stressState: StressState;
   heartRate: number;
   onTapIntervention?: () => void;
+  onChangeStressState?: (state: StressState) => void;
 }
 
 const stateConfig = {
@@ -26,7 +27,7 @@ const stateConfig = {
   },
 };
 
-export function WatchSimulator({ stressState, heartRate, onTapIntervention }: WatchSimulatorProps) {
+export function WatchSimulator({ stressState, heartRate, onTapIntervention, onChangeStressState }: WatchSimulatorProps) {
   const config = stateConfig[stressState];
   const radius = 72;
   const circumference = 2 * Math.PI * radius;
@@ -38,9 +39,35 @@ export function WatchSimulator({ stressState, heartRate, onTapIntervention }: Wa
     return <Heart className="w-5 h-5 text-blue-500" />;
   };
 
+  const stressStates: { state: StressState; label: string; color: string }[] = [
+    { state: 'unstressed', label: 'Calm', color: 'hsl(142, 71%, 45%)' },
+    { state: 'stressed', label: 'Stress', color: 'hsl(38, 92%, 50%)' },
+    { state: 'recovery', label: 'Recovery', color: 'hsl(210, 100%, 52%)' },
+  ];
+
   return (
     <div className="flex flex-col items-center gap-4">
       <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Apple Watch</p>
+
+      {/* Stress State Buttons */}
+      {onChangeStressState && (
+        <div className="flex gap-2">
+          {stressStates.map(({ state, label, color }) => (
+            <button
+              key={state}
+              onClick={() => onChangeStressState(state)}
+              className={`px-3 py-1.5 rounded-full text-[11px] font-medium transition-all border ${
+                stressState === state
+                  ? 'text-white border-transparent shadow-sm'
+                  : 'bg-white text-stone-500 border-stone-200 hover:border-stone-300'
+              }`}
+              style={stressState === state ? { backgroundColor: color } : undefined}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Watch Frame */}
       <div className="relative">

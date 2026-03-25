@@ -16,48 +16,62 @@ export const DEMO_COURSES: Course[] = [
 ];
 
 export const DEMO_SCHEDULE: ScheduleBlock[] = [
-  // 8:50–9:20
-  { id: 's1', label: 'Gym', startTime: '8:50', endTime: '9:20', days: ['Mon', 'Tue'] },
-  { id: 's2', label: 'Morning Check-in', startTime: '8:50', endTime: '9:20', days: ['Wed'] },
-  { id: 's3', label: 'Music', startTime: '8:55', endTime: '9:35', days: ['Thu'] },
-  { id: 's4', label: 'Morning Meeting', startTime: '8:50', endTime: '9:20', days: ['Fri'] },
-  // 9:20–9:40
-  { id: 's5', label: 'Journal – Weekend Reflection', startTime: '9:20', endTime: '9:40', days: ['Mon'] },
-  { id: 's6', label: 'Mindfulness SEL – Morning Check-in', startTime: '9:20', endTime: '9:40', days: ['Tue'] },
-  { id: 's7', label: 'Current Events', startTime: '9:20', endTime: '9:40', days: ['Wed'] },
-  { id: 's8', label: 'Literacy Circle', startTime: '9:20', endTime: '9:40', days: ['Fri'] },
-  // 9:40–10:25
-  { id: 's9', label: 'Music', startTime: '9:40', endTime: '10:25', days: ['Mon'] },
-  { id: 's10', label: 'Library', startTime: '9:45', endTime: '10:25', days: ['Tue'] },
-  { id: 's11', label: 'Canadian Reader Socials', startTime: '9:40', endTime: '10:25', days: ['Wed'] },
-  { id: 's12', label: 'Morning Meeting', startTime: '9:40', endTime: '10:25', days: ['Thu'] },
-  { id: 's13', label: 'Mindfulness SEL', startTime: '9:40', endTime: '10:25', days: ['Fri'] },
-  // 10:25–10:55
-  { id: 's14', label: 'Recess', startTime: '10:25', endTime: '10:55', days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'] },
-  // 10:55–11:40
-  { id: 's15', label: 'Math', startTime: '10:55', endTime: '11:40', days: ['Mon', 'Tue', 'Wed', 'Thu'] },
-  { id: 's16', label: 'Math Games', startTime: '10:55', endTime: '11:40', days: ['Fri'] },
-  // 11:40–11:50
-  { id: 's17', label: 'Brain Break', startTime: '11:40', endTime: '11:50', days: ['Mon', 'Tue', 'Wed', 'Thu'] },
-  { id: 's18', label: 'Art', startTime: '11:40', endTime: '11:50', days: ['Fri'] },
-  // 11:50–12:35
-  { id: 's19', label: 'Art (ESL Kyryrl)', startTime: '11:50', endTime: '12:35', days: ['Mon'] },
-  { id: 's20', label: 'French', startTime: '11:50', endTime: '12:35', days: ['Tue', 'Thu', 'Fri'] },
-  { id: 's21', label: 'Health', startTime: '11:50', endTime: '12:35', days: ['Wed'] },
-  // 12:35–1:15
-  { id: 's22', label: 'Lunch', startTime: '12:35', endTime: '1:15', days: ['Mon', 'Wed', 'Thu', 'Fri'] },
-  { id: 's23', label: 'Lunch Supervision', startTime: '12:35', endTime: '1:15', days: ['Tue'] },
-  // 1:15–1:35
-  { id: 's24', label: 'Silent Reading', startTime: '1:15', endTime: '1:35', days: ['Mon', 'Wed', 'Thu', 'Fri'] },
-  { id: 's25', label: 'Literacy Circles', startTime: '1:15', endTime: '1:35', days: ['Tue'] },
-  // 1:35–2:10
-  { id: 's26', label: 'Socials / Science', startTime: '1:35', endTime: '2:10', days: ['Mon'] },
-  { id: 's27', label: 'Science Nature Area Journaling', startTime: '1:35', endTime: '2:10', days: ['Wed'] },
-  { id: 's28', label: 'Flex', startTime: '1:35', endTime: '2:10', days: ['Thu'] },
-  { id: 's29', label: 'Art', startTime: '1:35', endTime: '2:10', days: ['Fri'] },
-  // 2:10–2:53
-  { id: 's30', label: 'Gym', startTime: '2:10', endTime: '2:53', days: ['Tue', 'Thu'] },
-  { id: 's31', label: 'Flex', startTime: '2:10', endTime: '2:53', days: ['Fri'] },
+  // Monday
+  { id: 'm1', label: 'Gym', startTime: '8:50', endTime: '9:20', days: ['Mon'] },
+  { id: 'm2', label: 'Journal – Weekend Reflection', startTime: '9:20', endTime: '9:40', days: ['Mon'] },
+  { id: 'm3', label: 'Music', startTime: '9:40', endTime: '10:25', days: ['Mon'] },
+  { id: 'm4', label: 'Recess', startTime: '10:25', endTime: '10:55', days: ['Mon'] },
+  { id: 'm5', label: 'Math', startTime: '10:55', endTime: '11:40', days: ['Mon'] },
+  { id: 'm6', label: 'Brain Break', startTime: '11:40', endTime: '11:50', days: ['Mon'] },
+  { id: 'm7', label: 'Art ESL Kyryrl', startTime: '11:50', endTime: '12:35', days: ['Mon'] },
+  { id: 'm8', label: 'Lunch', startTime: '12:35', endTime: '1:15', days: ['Mon'] },
+  { id: 'm9', label: 'Silent Reading', startTime: '1:15', endTime: '1:35', days: ['Mon'] },
+  { id: 'm10', label: 'Socials / Science', startTime: '1:35', endTime: '2:10', days: ['Mon'] },
+  // Tuesday
+  { id: 't1', label: 'Gym', startTime: '8:50', endTime: '9:20', days: ['Tue'] },
+  { id: 't2', label: 'Mindfulness SEL Morning Check-in', startTime: '9:20', endTime: '9:40', days: ['Tue'] },
+  { id: 't3', label: 'Library', startTime: '9:45', endTime: '10:25', days: ['Tue'] },
+  { id: 't4', label: 'Recess', startTime: '10:25', endTime: '10:55', days: ['Tue'] },
+  { id: 't5', label: 'Math', startTime: '10:55', endTime: '11:40', days: ['Tue'] },
+  { id: 't6', label: 'Brain Break', startTime: '11:40', endTime: '11:50', days: ['Tue'] },
+  { id: 't7', label: 'French', startTime: '11:50', endTime: '12:35', days: ['Tue'] },
+  { id: 't8', label: 'Lunch Supervision', startTime: '12:35', endTime: '1:15', days: ['Tue'] },
+  { id: 't9', label: 'Literacy Circles', startTime: '1:15', endTime: '1:35', days: ['Tue'] },
+  { id: 't10', label: 'Gym', startTime: '2:10', endTime: '2:53', days: ['Tue'] },
+  // Wednesday
+  { id: 'w1', label: 'Morning Check-in', startTime: '8:50', endTime: '9:20', days: ['Wed'] },
+  { id: 'w2', label: 'Current Events', startTime: '9:20', endTime: '9:40', days: ['Wed'] },
+  { id: 'w3', label: 'Canadian Reader Socials', startTime: '9:40', endTime: '10:25', days: ['Wed'] },
+  { id: 'w4', label: 'Recess', startTime: '10:25', endTime: '10:55', days: ['Wed'] },
+  { id: 'w5', label: 'Math', startTime: '10:55', endTime: '11:40', days: ['Wed'] },
+  { id: 'w6', label: 'Brain Break', startTime: '11:40', endTime: '11:50', days: ['Wed'] },
+  { id: 'w7', label: 'Health', startTime: '11:50', endTime: '12:35', days: ['Wed'] },
+  { id: 'w8', label: 'Lunch', startTime: '12:35', endTime: '1:15', days: ['Wed'] },
+  { id: 'w9', label: 'Silent Reading', startTime: '1:15', endTime: '1:35', days: ['Wed'] },
+  { id: 'w10', label: 'Science Nature Area Journaling', startTime: '2:10', endTime: '2:53', days: ['Wed'] },
+  // Thursday
+  { id: 'th1', label: 'Music Prep', startTime: '8:55', endTime: '9:35', days: ['Thu'] },
+  { id: 'th2', label: 'Morning Meeting', startTime: '9:40', endTime: '10:25', days: ['Thu'] },
+  { id: 'th3', label: 'Recess', startTime: '10:25', endTime: '10:55', days: ['Thu'] },
+  { id: 'th4', label: 'Math', startTime: '10:55', endTime: '11:40', days: ['Thu'] },
+  { id: 'th5', label: 'Brain Break', startTime: '11:40', endTime: '11:50', days: ['Thu'] },
+  { id: 'th6', label: 'French', startTime: '11:50', endTime: '12:35', days: ['Thu'] },
+  { id: 'th7', label: 'Lunch', startTime: '12:35', endTime: '1:15', days: ['Thu'] },
+  { id: 'th8', label: 'Silent Reading', startTime: '1:15', endTime: '1:35', days: ['Thu'] },
+  { id: 'th9', label: 'Flex', startTime: '1:35', endTime: '2:10', days: ['Thu'] },
+  { id: 'th10', label: 'Gym', startTime: '2:10', endTime: '2:53', days: ['Thu'] },
+  // Friday
+  { id: 'f1', label: 'Morning Meeting', startTime: '8:50', endTime: '9:20', days: ['Fri'] },
+  { id: 'f2', label: 'Literacy Circle', startTime: '9:20', endTime: '9:40', days: ['Fri'] },
+  { id: 'f3', label: 'Mindfulness SEL', startTime: '9:40', endTime: '10:25', days: ['Fri'] },
+  { id: 'f4', label: 'Recess', startTime: '10:25', endTime: '10:55', days: ['Fri'] },
+  { id: 'f5', label: 'Math Games', startTime: '10:55', endTime: '11:40', days: ['Fri'] },
+  { id: 'f6', label: 'Art', startTime: '11:40', endTime: '11:50', days: ['Fri'] },
+  { id: 'f7', label: 'French', startTime: '11:50', endTime: '12:35', days: ['Fri'] },
+  { id: 'f8', label: 'Lunch', startTime: '12:35', endTime: '1:15', days: ['Fri'] },
+  { id: 'f9', label: 'Silent Reading', startTime: '1:15', endTime: '1:35', days: ['Fri'] },
+  { id: 'f10', label: 'Art', startTime: '1:35', endTime: '2:10', days: ['Fri'] },
+  { id: 'f11', label: 'Flex', startTime: '2:10', endTime: '2:53', days: ['Fri'] },
 ];
 
 // 3-minute compressed demo timeline (180,000 ms)

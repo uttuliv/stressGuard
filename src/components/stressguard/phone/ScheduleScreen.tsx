@@ -40,16 +40,16 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
   };
 
   return (
-    <div className="h-full flex flex-col bg-black text-white">
-      <div className="px-4 pt-3 pb-2 flex items-center justify-between">
+    <div className="h-full flex flex-col bg-gradient-to-b from-stone-50 to-white text-stone-800">
+      <div className="px-4 pt-10 pb-2 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <button onClick={onBack} className="p-1">
-            <ChevronLeft className="w-5 h-5 text-blue-400" />
+            <ChevronLeft className="w-5 h-5 text-stone-400" />
           </button>
-          <h1 className="text-sm font-semibold">Schedule</h1>
+          <h1 className="text-sm font-semibold text-stone-700">Schedule</h1>
         </div>
-        <button onClick={() => setAdding(!adding)} className="p-1.5 rounded-full bg-neutral-800">
-          {adding ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4 text-blue-400" />}
+        <button onClick={() => setAdding(!adding)} className="p-1.5 rounded-full bg-white border border-stone-200 hover:bg-stone-50">
+          {adding ? <X className="w-4 h-4 text-stone-500" /> : <Plus className="w-4 h-4 text-stone-500" />}
         </button>
       </div>
 
@@ -57,8 +57,7 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
         {/* Add form */}
         {adding && (
           <motion.div
-            className="rounded-xl p-4 space-y-3"
-            style={{ backgroundColor: 'hsl(0,0%,10%)' }}
+            className="rounded-2xl p-4 space-y-3 bg-white border border-stone-200"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
           >
@@ -66,23 +65,23 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
               value={newName}
               onChange={e => setNewName(e.target.value)}
               placeholder="Course name"
-              className="w-full bg-neutral-800 rounded-lg px-3 py-2 text-xs text-white placeholder-neutral-600 outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-700 placeholder-stone-300 outline-none focus:ring-1 focus:ring-stone-400 focus:border-stone-400"
             />
             <input
               value={newTime}
               onChange={e => setNewTime(e.target.value)}
               placeholder="Time (e.g. 10:00 AM)"
-              className="w-full bg-neutral-800 rounded-lg px-3 py-2 text-xs text-white placeholder-neutral-600 outline-none focus:ring-1 focus:ring-blue-500"
+              className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs text-stone-700 placeholder-stone-300 outline-none focus:ring-1 focus:ring-stone-400 focus:border-stone-400"
             />
             <div>
-              <p className="text-[10px] text-neutral-400 mb-1.5">Days</p>
+              <p className="text-[10px] text-stone-400 mb-1.5">Days</p>
               <div className="flex gap-1.5">
                 {DAYS.map(day => (
                   <button
                     key={day}
                     onClick={() => toggleDay(day)}
-                    className={`px-2 py-1 rounded-md text-[10px] font-medium transition-colors ${
-                      newDays.includes(day) ? 'bg-blue-500 text-white' : 'bg-neutral-800 text-neutral-400'
+                    className={`px-2.5 py-1 rounded-lg text-[10px] font-medium transition-colors border ${
+                      newDays.includes(day) ? 'bg-stone-800 text-white border-stone-800' : 'bg-white text-stone-400 border-stone-200 hover:border-stone-300'
                     }`}
                   >
                     {day}
@@ -90,10 +89,10 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
                 ))}
               </div>
             </div>
-            {error && <p className="text-[10px] text-red-400">{error}</p>}
+            {error && <p className="text-[10px] text-red-500">{error}</p>}
             <button
               onClick={handleAdd}
-              className="w-full h-9 bg-green-500 rounded-lg text-xs font-semibold flex items-center justify-center gap-1"
+              className="w-full h-9 bg-stone-800 text-white rounded-xl text-xs font-medium flex items-center justify-center gap-1 hover:bg-stone-700"
             >
               <Check className="w-3.5 h-3.5" /> Add Course
             </button>
@@ -104,19 +103,18 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
         {courses.map((course, i) => (
           <motion.div
             key={course.id}
-            className="rounded-xl p-3"
-            style={{ backgroundColor: 'hsl(0,0%,10%)' }}
+            className="rounded-2xl p-3 bg-white border border-stone-100"
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.04 }}
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-medium">{course.name}</p>
-                <p className="text-[10px] text-neutral-500 mt-0.5">
+                <p className="text-[11px] font-medium text-stone-700">{course.name}</p>
+                <p className="text-[9px] text-stone-400 mt-0.5">
                   {course.time} · {course.days.join(', ')}
                 </p>
-                {course.room && <p className="text-[10px] text-neutral-600">{course.room}</p>}
+                {course.room && <p className="text-[9px] text-stone-400">{course.room}</p>}
               </div>
             </div>
           </motion.div>

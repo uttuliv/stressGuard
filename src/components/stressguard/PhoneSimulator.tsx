@@ -62,15 +62,15 @@ export function PhoneSimulator({
       {/* Phone Frame */}
       <div className="relative">
         {/* Outer case */}
-        <div className="w-[280px] h-[570px] rounded-[40px] bg-gradient-to-b from-neutral-700 to-neutral-800 p-[3px] shadow-2xl">
+        <div className="w-[280px] h-[570px] rounded-[40px] bg-gradient-to-b from-stone-300 to-stone-400 p-[3px] shadow-2xl">
           {/* Inner bezel */}
-          <div className="w-full h-full rounded-[38px] bg-gradient-to-b from-neutral-800 to-neutral-900 p-[2px]">
+          <div className="w-full h-full rounded-[38px] bg-gradient-to-b from-stone-200 to-stone-300 p-[2px]">
             {/* Screen */}
             <div className="w-full h-full rounded-[36px] overflow-hidden relative">
-              {/* Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120px] h-[28px] bg-black rounded-b-2xl z-20" />
+              {/* Dynamic Island */}
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[90px] h-[24px] bg-stone-900 rounded-full z-20" />
               {/* Home indicator */}
-              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-white/20 rounded-full z-20" />
+              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-stone-400/40 rounded-full z-20" />
 
               {/* Screen content */}
               <div className="w-full h-full">
@@ -80,10 +80,10 @@ export function PhoneSimulator({
           </div>
         </div>
         {/* Side buttons */}
-        <div className="absolute left-[-3px] top-[100px] w-[3px] h-[28px] rounded-l-sm bg-neutral-600" />
-        <div className="absolute left-[-3px] top-[145px] w-[3px] h-[50px] rounded-l-sm bg-neutral-600" />
-        <div className="absolute left-[-3px] top-[200px] w-[3px] h-[50px] rounded-l-sm bg-neutral-600" />
-        <div className="absolute right-[-3px] top-[155px] w-[3px] h-[60px] rounded-l-sm bg-neutral-600" />
+        <div className="absolute left-[-3px] top-[100px] w-[3px] h-[28px] rounded-l-sm bg-stone-400" />
+        <div className="absolute left-[-3px] top-[145px] w-[3px] h-[50px] rounded-l-sm bg-stone-400" />
+        <div className="absolute left-[-3px] top-[200px] w-[3px] h-[50px] rounded-l-sm bg-stone-400" />
+        <div className="absolute right-[-3px] top-[155px] w-[3px] h-[60px] rounded-l-sm bg-stone-400" />
       </div>
     </div>
   );

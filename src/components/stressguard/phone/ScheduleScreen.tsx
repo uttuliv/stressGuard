@@ -126,11 +126,11 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
             >
               <input value={newLabel} onChange={e => setNewLabel(e.target.value)} placeholder="Block name"
                 className="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-1.5 text-[11px] text-stone-700 placeholder-stone-300 outline-none focus:ring-1 focus:ring-stone-400" />
-              <div className="flex gap-2">
-                <input value={newStart} onChange={e => setNewStart(e.target.value)} placeholder="Start (e.g. 9:00)"
-                  className="flex-1 bg-stone-50 border border-stone-200 rounded-xl px-3 py-1.5 text-[11px] text-stone-700 placeholder-stone-300 outline-none focus:ring-1 focus:ring-stone-400" />
-                <input value={newEnd} onChange={e => setNewEnd(e.target.value)} placeholder="End (e.g. 9:40)"
-                  className="flex-1 bg-stone-50 border border-stone-200 rounded-xl px-3 py-1.5 text-[11px] text-stone-700 placeholder-stone-300 outline-none focus:ring-1 focus:ring-stone-400" />
+              <div className="grid grid-cols-2 gap-2">
+                <input value={newStart} onChange={e => setNewStart(e.target.value)} placeholder="Start"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-2 py-1.5 text-[11px] text-stone-700 placeholder-stone-300 outline-none focus:ring-1 focus:ring-stone-400" />
+                <input value={newEnd} onChange={e => setNewEnd(e.target.value)} placeholder="End"
+                  className="w-full bg-stone-50 border border-stone-200 rounded-xl px-2 py-1.5 text-[11px] text-stone-700 placeholder-stone-300 outline-none focus:ring-1 focus:ring-stone-400" />
               </div>
               <div className="flex gap-1.5">
                 {DAYS.map(day => (

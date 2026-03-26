@@ -55,7 +55,7 @@ export function DashboardScreen({
   return (
     <div className="h-full flex flex-col bg-gradient-to-b from-stone-50 to-white text-stone-800">
       {/* Header */}
-      <div className="px-5 pt-10 pb-3 flex items-start justify-end">
+      <div className="px-4 pt-10 pb-3 flex items-start justify-end">
         <div className="text-right">
           <p className="text-sm font-semibold text-stone-800">{dayName}</p>
           <p className="text-[10px] text-stone-400 uppercase tracking-wide">{dateStr}</p>

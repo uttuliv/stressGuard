@@ -18,11 +18,23 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {/* Abstract decorative circles */}
-          <div className="relative w-36 h-36 mb-2">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-orange-200/60 to-stone-300/40" />
-            <div className="absolute top-6 left-8 w-20 h-20 rounded-full bg-gradient-to-br from-stone-300/50 to-orange-100/30" />
-            <div className="absolute bottom-4 right-4 w-14 h-14 rounded-full bg-gradient-to-br from-orange-100/40 to-stone-200/60" />
+          {/* Breathing ball */}
+          <div className="relative w-36 h-36 mb-2 flex items-center justify-center">
+            <motion.div
+              className="absolute rounded-full bg-gradient-to-br from-stone-300/30 to-stone-200/20"
+              animate={{ width: [120, 144, 120], height: [120, 144, 120], opacity: [0.3, 0.15, 0.3] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="absolute rounded-full bg-gradient-to-br from-stone-400/40 to-stone-300/30"
+              animate={{ width: [80, 100, 80], height: [80, 100, 80], opacity: [0.4, 0.25, 0.4] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="rounded-full bg-gradient-to-br from-stone-500 to-stone-400"
+              animate={{ width: [48, 64, 48], height: [48, 64, 48] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+            />
           </div>
 
           <div className="text-center space-y-2">

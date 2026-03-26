@@ -10,6 +10,7 @@ export function useDemoController() {
   const [stressState, setStressState] = useState<StressState>('unstressed');
   const [phoneScreen, setPhoneScreen] = useState<PhoneScreen>('onboarding');
   const [activeCourseIndex, setActiveCourseIndex] = useState<number | null>(null);
+  const [activeBlockId, setActiveBlockId] = useState<string | null>(null);
   const [heartRate, setHeartRate] = useState(68);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const startTimeRef = useRef<number>(0);
@@ -71,6 +72,7 @@ export function useDemoController() {
     setStressState('unstressed');
     setPhoneScreen('onboarding');
     setActiveCourseIndex(null);
+    setActiveBlockId(null);
     setHeartRate(68);
   }, []);
 
@@ -84,6 +86,7 @@ export function useDemoController() {
     stressState,
     phoneScreen,
     activeCourseIndex,
+    activeBlockId,
     heartRate,
     play,
     pause,
@@ -91,6 +94,7 @@ export function useDemoController() {
     setStressState,
     goToScreen,
     setActiveCourseIndex,
+    setActiveBlockId,
     totalDuration: TOTAL_DURATION,
   };
 }

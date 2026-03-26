@@ -59,22 +59,10 @@ export function DashboardScreen({
         {/* Breathing ball synced with stress state */}
         <div className="relative w-10 h-10 flex items-center justify-center">
           <motion.div
-            className="absolute rounded-full border"
-            style={{ borderColor: stressState === 'stressed' ? 'rgba(245,158,11,0.4)' : stressState === 'recovery' ? 'rgba(59,130,246,0.4)' : 'rgba(249,115,22,0.4)' }}
+            className="rounded-full"
+            style={{ backgroundColor: stressState === 'stressed' ? 'rgba(245,158,11,0.7)' : stressState === 'recovery' ? 'rgba(59,130,246,0.7)' : 'rgba(34,197,94,0.7)' }}
             animate={{ width: [16, 40, 16], height: [16, 40, 16] }}
             transition={{ duration: stressState === 'stressed' ? 2 : stressState === 'recovery' ? 3 : 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1] }}
-          />
-          <motion.div
-            className="absolute rounded-full border"
-            style={{ borderColor: stressState === 'stressed' ? 'rgba(245,158,11,0.6)' : stressState === 'recovery' ? 'rgba(59,130,246,0.6)' : 'rgba(249,115,22,0.6)' }}
-            animate={{ width: [12, 28, 12], height: [12, 28, 12] }}
-            transition={{ duration: stressState === 'stressed' ? 2 : stressState === 'recovery' ? 3 : 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 0.15 }}
-          />
-          <motion.div
-            className="rounded-full"
-            style={{ backgroundColor: stressState === 'stressed' ? 'rgba(245,158,11,0.7)' : stressState === 'recovery' ? 'rgba(59,130,246,0.7)' : 'rgba(249,115,22,0.7)' }}
-            animate={{ width: [6, 14, 6], height: [6, 14, 6] }}
-            transition={{ duration: stressState === 'stressed' ? 2 : stressState === 'recovery' ? 3 : 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 0.3 }}
           />
         </div>
         <div className="text-right">

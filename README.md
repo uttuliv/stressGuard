@@ -43,3 +43,6 @@ The project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) 
 ## License
 
 All rights reserved.
+# Welcome to your Lovable project
+
+Helping teachers recognize stress before it shapes the classroom.

@@ -5,8 +5,10 @@ import { StressState } from '@/types/stressguard';
 
 interface DashboardScreenProps {
   activeCourseIndex: number | null;
+  activeBlockId: string | null;
   stressState: StressState;
   onStartSession: (index: number) => void;
+  onStartBlockSession: (blockId: string) => void;
   onEndSession: () => void;
   onNavigate: (screen: string) => void;
 }

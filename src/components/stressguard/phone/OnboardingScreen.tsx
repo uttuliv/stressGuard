@@ -30,7 +30,7 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
               Track and measure your<br />stress levels with ease
             </h1>
             <p className="text-xs text-stone-500 leading-relaxed">
-              Your personal stress companion for academic success
+              Helping teachers recognize stress before it shapes the classroom.
             </p>
           </div>
 

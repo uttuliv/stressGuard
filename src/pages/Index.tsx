@@ -28,10 +28,16 @@ const Index = () => {
           screen={demo.phoneScreen}
           stressState={demo.stressState}
           activeCourseIndex={demo.activeCourseIndex}
+          activeBlockId={demo.activeBlockId}
           onNavigate={demo.goToScreen}
           onStartSession={(i) => demo.setActiveCourseIndex(i)}
+          onStartBlockSession={(blockId) => {
+            demo.setActiveBlockId(blockId);
+            demo.setStressState('unstressed');
+          }}
           onEndSession={() => {
             demo.setActiveCourseIndex(null);
+            demo.setActiveBlockId(null);
             demo.goToScreen('survey');
           }}
         />

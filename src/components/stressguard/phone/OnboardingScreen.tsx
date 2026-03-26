@@ -18,22 +18,22 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          {/* Breathing ball */}
-          <div className="relative w-36 h-36 mb-2 flex items-center justify-center">
+          {/* Breathing circle */}
+          <div className="relative w-40 h-40 mb-2 flex items-center justify-center">
             <motion.div
-              className="absolute rounded-full bg-gradient-to-br from-stone-300/30 to-stone-200/20"
-              animate={{ width: [120, 144, 120], height: [120, 144, 120], opacity: [0.3, 0.15, 0.3] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute rounded-full border border-stone-300/40"
+              animate={{ width: [60, 160, 60], height: [60, 160, 60] }}
+              transition={{ duration: 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1] }}
             />
             <motion.div
-              className="absolute rounded-full bg-gradient-to-br from-stone-400/40 to-stone-300/30"
-              animate={{ width: [80, 100, 80], height: [80, 100, 80], opacity: [0.4, 0.25, 0.4] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute rounded-full border border-stone-400/50"
+              animate={{ width: [50, 120, 50], height: [50, 120, 50] }}
+              transition={{ duration: 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 0.15 }}
             />
             <motion.div
-              className="rounded-full bg-gradient-to-br from-stone-500 to-stone-400"
-              animate={{ width: [48, 64, 48], height: [48, 64, 48] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute rounded-full border border-stone-500/60"
+              animate={{ width: [40, 80, 40], height: [40, 80, 40] }}
+              transition={{ duration: 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 0.3 }}
             />
           </div>
 

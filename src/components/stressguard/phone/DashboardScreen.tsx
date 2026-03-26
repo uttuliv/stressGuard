@@ -13,6 +13,12 @@ interface DashboardScreenProps {
 
 const DAYS_SHORT = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 
+function toMinutes(t: string): number {
+  const [h, m] = t.split(':').map(Number);
+  const adjusted = h < 8 ? h + 12 : h;
+  return adjusted * 60 + m;
+}
+
 function formatTime(t: string) {
   const [h, m] = t.split(':').map(Number);
   const displayH = h > 12 ? h - 12 : h;
@@ -38,11 +44,7 @@ export function DashboardScreen({
   const todayShort = getTodayDayName();
   const todayBlocks = DEMO_SCHEDULE
     .filter(b => b.days.includes(todayShort))
-    .sort((a, b) => {
-      const [ah, am] = a.startTime.split(':').map(Number);
-      const [bh, bm] = b.startTime.split(':').map(Number);
-      return ah * 60 + am - (bh * 60 + bm);
-    });
+    .sort((a, b) => toMinutes(a.startTime) - toMinutes(b.startTime));
 
   const recentEvents = DEMO_STRESS_EVENTS.slice(0, 2);
 

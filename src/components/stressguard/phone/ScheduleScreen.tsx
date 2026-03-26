@@ -9,27 +9,18 @@ interface ScheduleScreenProps {
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 
-const TIME_SLOTS = [
-  '8:50', '9:20', '9:40', '10:25', '10:55', '11:40', '11:50',
-  '12:35', '1:15', '1:35', '2:10', '2:53'
-];
-
-function formatTime(t: string) {
+/** Convert "H:MM" to minutes since midnight. Hours < 8 are treated as PM (add 12). */
+function toMinutes(t: string): number {
   const [h, m] = t.split(':').map(Number);
-  const suffix = h >= 12 && h < 13 ? (h === 12 ? 'PM' : 'PM') : h >= 13 ? 'PM' : 'AM';
-  const displayH = h > 12 ? h - 12 : h;
-  return `${displayH}:${m.toString().padStart(2, '0')}`;
+  const adjusted = h < 8 ? h + 12 : h;
+  return adjusted * 60 + m;
 }
 
-// Deduplicate time slots from schedule
-function getUniqueTimeSlots(blocks: ScheduleBlock[]) {
-  const times = new Set<string>();
-  blocks.forEach(b => { times.add(b.startTime); times.add(b.endTime); });
-  return Array.from(times).sort((a, b) => {
-    const [ah, am] = a.split(':').map(Number);
-    const [bh, bm] = b.split(':').map(Number);
-    return ah * 60 + am - (bh * 60 + bm);
-  });
+function formatTime(t: string): string {
+  const [h, m] = t.split(':').map(Number);
+  const isPM = h >= 12 || h < 8;
+  const displayH = h > 12 ? h - 12 : h === 0 ? 12 : h;
+  return `${displayH}:${m.toString().padStart(2, '0')}`;
 }
 
 export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
@@ -42,8 +33,6 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
   const [newEnd, setNewEnd] = useState('');
   const [newDays, setNewDays] = useState<string[]>([]);
   const [error, setError] = useState('');
-
-  const timeSlots = getUniqueTimeSlots(blocks);
 
   const getBlockForSlot = (day: string, startTime: string): ScheduleBlock | undefined => {
     return blocks.find(b => b.days.includes(day) && b.startTime === startTime);
@@ -96,12 +85,8 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
     setError('');
   };
 
-  // Build unique start times for rows
-  const rowTimes = [...new Set(blocks.map(b => b.startTime))].sort((a, b) => {
-    const [ah, am] = a.split(':').map(Number);
-    const [bh, bm] = b.split(':').map(Number);
-    return ah * 60 + am - (bh * 60 + bm);
-  });
+  // Build unique start times for rows, sorted correctly
+  const rowTimes = [...new Set(blocks.map(b => b.startTime))].sort((a, b) => toMinutes(a) - toMinutes(b));
 
   return (
     <div className="h-full flex flex-col bg-gradient-to-b from-stone-50 to-white text-stone-800">
@@ -188,7 +173,7 @@ export function ScheduleScreen({ onBack }: ScheduleScreenProps) {
                         {block ? (
                           <div className="bg-white border border-stone-100 rounded-lg px-1 py-1 min-h-[24px] relative group">
                             <p className="text-[7px] font-medium text-stone-700 leading-tight">{block.label}</p>
-                            <p className="text-[6px] text-stone-400">{formatTime(block.startTime)}-{formatTime(block.endTime)}</p>
+                            <p className="text-[6px] text-stone-400">{formatTime(block.startTime)}–{formatTime(block.endTime)}</p>
                             {editing && (
                               <div className="flex gap-0.5 mt-0.5">
                                 <button onClick={() => startEdit(block)} className="p-0.5 rounded bg-stone-50 hover:bg-stone-100">

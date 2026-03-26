@@ -57,9 +57,9 @@ export function DashboardScreen({
       {/* Header */}
       <div className="px-5 pt-10 pb-3 flex items-start justify-between">
         <div>
-          <p className="text-xs text-stone-400">Hi Max, your stress levels</p>
-          <p className="text-xs text-stone-400">were lowest at 10am</p>
-          <p className="text-xs text-stone-400">this morning.</p>
+          <p className="text-xs text-orange-400">Hi Max, your stress levels</p>
+          <p className="text-xs text-orange-400">were lowest at 10am</p>
+          <p className="text-xs text-orange-400">this morning.</p>
         </div>
         <div className="text-right">
           <p className="text-sm font-semibold text-stone-800">{dayName}</p>

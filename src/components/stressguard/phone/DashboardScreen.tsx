@@ -5,8 +5,10 @@ import { StressState } from '@/types/stressguard';
 
 interface DashboardScreenProps {
   activeCourseIndex: number | null;
+  activeBlockId: string | null;
   stressState: StressState;
   onStartSession: (index: number) => void;
+  onStartBlockSession: (blockId: string) => void;
   onEndSession: () => void;
   onNavigate: (screen: string) => void;
 }
@@ -32,18 +34,20 @@ function getTodayDayName(): string {
 
 export function DashboardScreen({
   activeCourseIndex,
+  activeBlockId,
   stressState,
   onStartSession,
+  onStartBlockSession,
   onEndSession,
   onNavigate,
 }: DashboardScreenProps) {
   const now = new Date();
-  const dayName = now.toLocaleDateString('en-US', { weekday: 'long' });
+  const dayName = 'Monday';
   const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-  const todayShort = getTodayDayName();
+  // Always show Monday schedule
   const todayBlocks = DEMO_SCHEDULE
-    .filter(b => b.days.includes(todayShort))
+    .filter(b => b.days.includes('Mon'))
     .sort((a, b) => toMinutes(a.startTime) - toMinutes(b.startTime));
 
   const recentEvents = DEMO_STRESS_EVENTS.slice(0, 2);
@@ -65,7 +69,7 @@ export function DashboardScreen({
 
       <div className="flex-1 overflow-y-auto px-4 pb-4 space-y-4">
         {/* Active Session Banner */}
-        {activeCourseIndex !== null && (
+        {activeBlockId && (
           <motion.div
             className="rounded-2xl p-4 relative overflow-hidden border"
             style={{
@@ -78,7 +82,9 @@ export function DashboardScreen({
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-[10px] text-stone-400 uppercase tracking-wide">Active Session</p>
-                <p className="text-xs font-semibold mt-0.5 text-stone-800">{DEMO_COURSES[activeCourseIndex].name.split(' – ')[0]}</p>
+                <p className="text-xs font-semibold mt-0.5 text-stone-800">
+                  {DEMO_SCHEDULE.find(b => b.id === activeBlockId)?.label || 'Session'}
+                </p>
               </div>
               <motion.div
                 className="w-2.5 h-2.5 rounded-full"
@@ -93,7 +99,7 @@ export function DashboardScreen({
           </motion.div>
         )}
 
-        {/* Today's Schedule (Weekly Grid Preview) */}
+        {/* Today's Schedule */}
         <div>
           <div className="flex items-center justify-between mb-2">
             <h2 className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Today's Schedule</h2>
@@ -102,10 +108,11 @@ export function DashboardScreen({
             </button>
           </div>
           <div className="space-y-1.5">
-            {todayBlocks.slice(0, 6).map((block, i) => (
+            {todayBlocks.map((block, i) => (
               <motion.div
-                key={block.id + '-' + i}
+                key={block.id}
                 className="rounded-xl p-2.5 flex items-center justify-between bg-white border border-stone-100"
+                style={activeBlockId === block.id ? { backgroundColor: 'hsl(210, 40%, 97%)' } : undefined}
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.03 }}
@@ -118,13 +125,15 @@ export function DashboardScreen({
                   </div>
                   <p className="text-[10px] font-medium text-stone-700">{block.label}</p>
                 </div>
+                {activeBlockId === block.id ? (
+                  <span className="text-[9px] bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full border border-emerald-100 font-medium">Live</span>
+                ) : (
+                  <button onClick={() => onStartBlockSession(block.id)} className="p-1.5 rounded-full bg-stone-50 hover:bg-stone-100 border border-stone-100" title="Start StressGuard">
+                    <Play className="w-2.5 h-2.5 text-stone-400" />
+                  </button>
+                )}
               </motion.div>
             ))}
-            {todayBlocks.length > 6 && (
-              <button onClick={() => onNavigate('schedule')} className="w-full text-[9px] text-stone-400 py-1.5 hover:text-stone-600">
-                +{todayBlocks.length - 6} more blocks
-              </button>
-            )}
           </div>
         </div>
 

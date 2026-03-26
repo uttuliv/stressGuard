@@ -11,8 +11,10 @@ interface PhoneSimulatorProps {
   screen: PhoneScreen;
   stressState: StressState;
   activeCourseIndex: number | null;
+  activeBlockId: string | null;
   onNavigate: (screen: PhoneScreen) => void;
   onStartSession: (index: number) => void;
+  onStartBlockSession: (blockId: string) => void;
   onEndSession: () => void;
 }
 
@@ -20,8 +22,10 @@ export function PhoneSimulator({
   screen,
   stressState,
   activeCourseIndex,
+  activeBlockId,
   onNavigate,
   onStartSession,
+  onStartBlockSession,
   onEndSession,
 }: PhoneSimulatorProps) {
   const renderScreen = () => {
@@ -32,8 +36,10 @@ export function PhoneSimulator({
         return (
           <DashboardScreen
             activeCourseIndex={activeCourseIndex}
+            activeBlockId={activeBlockId}
             stressState={stressState}
             onStartSession={onStartSession}
+            onStartBlockSession={onStartBlockSession}
             onEndSession={onEndSession}
             onNavigate={(s) => onNavigate(s as PhoneScreen)}
           />

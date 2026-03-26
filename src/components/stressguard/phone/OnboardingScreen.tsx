@@ -21,17 +21,17 @@ export function OnboardingScreen({ onComplete }: OnboardingScreenProps) {
           {/* Breathing circle */}
           <div className="relative w-40 h-40 mb-2 flex items-center justify-center">
             <motion.div
-              className="absolute rounded-full border border-stone-300/40"
+              className="absolute rounded-full border border-orange-300/40"
               animate={{ width: [60, 160, 60], height: [60, 160, 60] }}
               transition={{ duration: 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1] }}
             />
             <motion.div
-              className="absolute rounded-full border border-stone-400/50"
+              className="absolute rounded-full border border-orange-400/50"
               animate={{ width: [50, 120, 50], height: [50, 120, 50] }}
               transition={{ duration: 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 0.15 }}
             />
             <motion.div
-              className="absolute rounded-full border border-stone-500/60"
+              className="absolute rounded-full border border-orange-500/60"
               animate={{ width: [40, 80, 40], height: [40, 80, 40] }}
               transition={{ duration: 5, repeat: Infinity, ease: [0.45, 0, 0.55, 1], delay: 0.3 }}
             />

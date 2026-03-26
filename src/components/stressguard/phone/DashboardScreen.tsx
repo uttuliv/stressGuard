@@ -57,9 +57,9 @@ export function DashboardScreen({
       {/* Header */}
       <div className="px-5 pt-10 pb-3 flex items-start justify-between">
         <div>
-          <p className="text-xs text-stone-400">Hi Max, your stress levels</p>
-          <p className="text-xs text-stone-400">were lowest at 10am</p>
-          <p className="text-xs text-stone-400">this morning.</p>
+          <p className="text-xs text-orange-400">Hi Max, your stress levels</p>
+          <p className="text-xs text-orange-400">were lowest at 10am</p>
+          <p className="text-xs text-orange-400">this morning.</p>
         </div>
         <div className="text-right">
           <p className="text-sm font-semibold text-stone-800">{dayName}</p>
@@ -119,9 +119,9 @@ export function DashboardScreen({
               >
                 <div className="flex items-center gap-2.5">
                   <div className="flex flex-col items-center min-w-[32px]">
-                    <span className="text-[8px] text-stone-400">{formatTime(block.startTime)}</span>
-                    <div className="w-px h-2 bg-stone-200" />
-                    <span className="text-[8px] text-stone-400">{formatTime(block.endTime)}</span>
+                    <span className="text-[8px] text-orange-400">{formatTime(block.startTime)}</span>
+                    <div className="w-px h-2 bg-orange-200" />
+                    <span className="text-[8px] text-orange-400">{formatTime(block.endTime)}</span>
                   </div>
                   <p className="text-[10px] font-medium text-stone-700">{block.label}</p>
                 </div>
